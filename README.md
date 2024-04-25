@@ -1,16 +1,16 @@
 # Sport-betting-data
 [![License: GPLv3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-## ▶️ About ##
+## About ##
 A scrapper written in Node.js for sport betting data from brokers.  
 The first stage focuses on the data on Hong Kong Jockey Club (HKJC) website, including Mark Six, Horse Racing and Football betting data. 
-Please refer to the [Development Plan](#-development-plan) for the progress.
+Please refer to the [Development Plan](#development-plan) for the progress.
 
-## ▶️ Prerequisites ##
+## Prerequisites ##
 To running this tool, please make sure the following prerequisites are ready:
 - Node.js ([https://nodejs.org/](https://nodejs.org/))
 
-## ▶️ Setup ##
+## Setup ##
 1. Download repository  
 ```console
 git clone https://github.com/rkwyu/sport-betting-data
@@ -21,7 +21,7 @@ cd ./sport-betting-data
 npm install
 ```
 
-## ▶️ Usage (CLI) ##
+## Usage (CLI) ##
 ```console
 Usage: node run.js [options]  
 Options:  
@@ -29,12 +29,12 @@ Options:
   -hkjc_ms        Get HKJC Marksix Result
 ```
 
-#### ▶️ Example ####
+#### Example ####
 ```console
 node run.js -hkjc_ms
 ```
 
-## ▶️ Development Plan ##
+## Development Plan ##
 - [Hong Kong Jockey Club (HKJC)](https://www.hkjc.com/)
   - [x] Mark Six
     - [x] Results (since 1993)
@@ -75,5 +75,5 @@ node run.js -hkjc_ms
   - [x] Important Notices
  
 
-## ▶️ License ##
+## License ##
 [GNU GPL v3.0](LICENSE.md)
