@@ -2,12 +2,12 @@
 [![License: GPLv3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 ## About ##
-A scrapper written for sport betting data from brokers.  
+A scrapper for sport betting data from different brokers.  
 The first stage focuses on the data on Hong Kong Jockey Club (HKJC) website, including Mark Six, Horse Racing and Football betting.  
 Please refer to the [Development Plan](#development-plan) for the current progress.  
 
 ## Prerequisites ##
-To running this tool, please make sure the following prerequisites are ready:
+Please make sure the following tool(s) / application(s) are properly setup and ready to use:
 - Node.js ([https://nodejs.org/](https://nodejs.org/))
 
 ## Setup ##
@@ -29,10 +29,61 @@ Options:
   -hkjc_ms        Get HKJC Marksix Result
 ```
 
-#### Example ####
+#### Example 1: Download HKJC's mark six data ####
 ```console
 node run.js -hkjc_ms
 ```
+
+#### Example 2: Download HKJC's horse racing data ####
+```console
+node run.js -hkjc_hr
+```
+
+## Configuration ##
+Output directory can be configured in `config.ini`
+```ini
+[DIRECTORY]
+output=output
+```
+
+## Output File Structure ##
+```
+.
+├── {output directory}
+│   └── {broker}
+│      └── {type}
+│         └── ...
+```
+
+#### Example ####
+```
+.
+├── output
+│   └── hkjc
+│      └── football
+│      └── marksix
+│         ├── 1993.json
+│         ├── 1994.json
+│         └── ...
+│      └── racing
+│         ├── 2024-04-28_ST
+│         │   ├── 01
+│         │   │   ├── dbl
+│         │   │   ├── ...
+│         │   │   └── winprog
+│         │   ├── 02
+│         │   ├── ...
+│         │   ├── importantnotices
+│         │   ├── jkc
+│         │   ├── scratched
+│         │   ├── tnc
+│         │   ├── winodds
+│         │   ├── winplaodds
+│         │   └── winplaoddspre
+│         └── ...
+```
+Date-based data will be grouped into a directory using date-identifier (e.g. `2024-04-28_ST`) as the directory name  
+Match-based / Race-based data will be further grouped into a directory using match-identifier / race-identifier (e.g. `01`, `02`, ...) as the directory name  
 
 ## Development Plan ##
 - Hong Kong Jockey Club (HKJC) ([https://www.hkjc.com/](https://www.hkjc.com/))
