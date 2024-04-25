@@ -21,6 +21,13 @@ cd ./sport-betting-data
 npm install
 ```
 
+## Configuration ##
+Output directory can be configured in `config.ini`
+```ini
+[DIRECTORY]
+output=output
+```
+
 ## Usage (CLI) ##
 ```console
 Usage: node run.js [options]  
@@ -39,14 +46,7 @@ node run.js -hkjc_ms
 node run.js -hkjc_hr
 ```
 
-## Configuration ##
-Output directory can be configured in `config.ini`
-```ini
-[DIRECTORY]
-output=output
-```
-
-## Output File Structure ##
+## Output Directory Structure ##
 ```
 .
 ├── {output directory}
