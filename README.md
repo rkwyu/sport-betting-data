@@ -1,10 +1,10 @@
-# Sport-betting-data
+# Sport-betting-data ![nodedotjs](https://img.shields.io/badge/node.js-v21.6.1-339933.svg?style=flat&logo=nodedotjs&logoColor=white) ![npm](https://img.shields.io/badge/npm-10.2.4-dc2c35.svg?style=flat&logo=npm&logoColor=white)
 [![License: GPLv3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 ## About ##
-A scrapper written in Node.js for sport betting data from brokers.  
-The first stage focuses on the data on Hong Kong Jockey Club (HKJC) website, including Mark Six, Horse Racing and Football betting data. 
-Please refer to the [Development Plan](#development-plan) for the progress.
+A scrapper written for sport betting data from brokers.  
+The first stage focuses on the data on Hong Kong Jockey Club (HKJC) website, including Mark Six, Horse Racing and Football betting.  
+Please refer to the [Development Plan](#development-plan) for the current progress.  
 
 ## Prerequisites ##
 To running this tool, please make sure the following prerequisites are ready:
@@ -35,7 +35,7 @@ node run.js -hkjc_ms
 ```
 
 ## Development Plan ##
-- [Hong Kong Jockey Club (HKJC)](https://www.hkjc.com/)
+- Hong Kong Jockey Club (HKJC) ([https://www.hkjc.com/](https://www.hkjc.com/))
   - [x] Mark Six
     - [x] Results (since 1993)
   - [ ] Horse Racing
