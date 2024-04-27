@@ -1,11 +1,10 @@
 import dateAndTime from 'date-and-time';
-import fs from 'fs'
 
 import { resultFetcher } from '../fetcher/ResultFetcher.js'
 import { fileIo } from '../../../utils/io/FileIo.js'
 import { configLoader } from '../../../utils/io/ConfigLoader.js'
 
-const outputDir = await configLoader.load("DIRECTORY", "output")
+const outputDir = configLoader.load("DIRECTORY", "output")
 
 class MarksixService {
     constructor() {
@@ -26,13 +25,20 @@ class MarksixService {
         let curYear = parseInt(dateAndTime.format(new Date(), "YYYY"))
         from = from || 1993
         to = to || curYear
+        let promises = []
         for (let year = from; year <= to; year++) {
-            let dest = `${outputDir}/hkjc/marksix/${year}.json`
-            if (year === curYear || !fs.existsSync(dest)) {
-                await fileIo.write(await resultFetcher.getResults(year), dest, true)
-                console.log(`Wrote ${year} marksix results: ${dest}`)
-            }
+            promises.push(resultFetcher.getResults(year))
         }
+        return Promise.allSettled(
+            promises
+        ).then(results => {
+            results.forEach(async (result, index, arr) => {
+                if (result.status === "fulfilled" && result.value) {
+                    let dest = `${outputDir}/hkjc/marksix/${(index + from)}.json`
+                    await fileIo.write(result.value, dest)
+                }
+            })
+        })
     }
 }
 

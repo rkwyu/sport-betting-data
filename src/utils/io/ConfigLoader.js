@@ -19,7 +19,7 @@ class ConfigLoader {
      * @param {string} key 
      * @returns {Promise<string>}
      */
-    async load(section, key) {
+    load(section, key) {
         return config[section][key]
     }
 }

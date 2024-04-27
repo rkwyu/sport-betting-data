@@ -2,7 +2,7 @@
 import { httpsRequester } from '../../../utils/request/HttpsRequester.js';
 import { configLoader } from '../../../utils/io/ConfigLoader.js';
 
-const host = await configLoader.load("HKJC", "host")
+const host = configLoader.load("HKJC", "host")
 
 class ScratchFetcher {
     constructor() {
@@ -13,8 +13,7 @@ class ScratchFetcher {
     }
 
     async getScratched(raceData) {
-        let url = `https://${host}/racing/getJSON.aspx?type=scratched&date=${raceData.mtgDate}&venue=${raceData.mtgVenue}`
-        return await httpsRequester.get(url)
+        return await httpsRequester.get(`https://${host}/racing/getJSON.aspx?type=scratched&date=${raceData.mtgDate}&venue=${raceData.mtgVenue}`)
     }
 }
 

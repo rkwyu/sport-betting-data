@@ -1,8 +1,7 @@
 import { httpsRequester } from '../../../utils/request/HttpsRequester.js'
-import { timer } from '../../../utils/timer/Timer.js'
 import { configLoader } from '../../../utils/io/ConfigLoader.js'
 
-const host = await configLoader.load("HKJC", "host")
+const host = configLoader.load("HKJC", "host")
 
 class ResultFetcher {
     constructor() {
@@ -14,18 +13,19 @@ class ResultFetcher {
 
     /**
      * Get 30 last marksix results
-     * @returns {Array<JSON>}
+     * @returns
      */
     async getLast30Results() {
         url = `https://${host}/contentserver/jcbw/cmc/last30draw.json`
-        let content = JSON.parse(await get(url))
-        return content.reverse()
+        return JSON.stringify(
+            JSON.parse(await httpsRequester.get(url)).reverse()
+        )
     }
 
     /**
      * Get marksix results in a year (1993 or later)
      * @param {int} year 
-     * @returns {Promise<string>}
+     * @returns
      */
     async getResults(year) {
         year = parseInt(year)
@@ -39,15 +39,19 @@ class ResultFetcher {
             `https://${host}/marksix/getJSON.aspx?sd=${year}0701&ed=${year}0930&sb=0`,
             `https://${host}/marksix/getJSON.aspx?sd=${year}1001&ed=${year}1231&sb=0`,
         ]
-        let result = []
-        for (const url of urls) {
-            await timer.sleep(1000)
-            let content = await httpsRequester.get(url)
-            if (content.length > 0) {
-                result = result.concat(JSON.parse(content).reverse())
-            }
-        }
-        return JSON.stringify(result)
+        return Promise.allSettled(
+            urls.map(url => httpsRequester.get(url))
+        ).then(results => {
+            return JSON.stringify(
+                results.reduce((accumulator, currentValue, currentIndex) => {
+                    if (currentValue.status === "fulfilled" && currentValue.value) {
+                        return accumulator.concat(JSON.parse(currentValue.value).reverse())
+                    } else {
+                        return accumulator
+                    }
+                }, [])
+            )
+        })
     }
 }
 

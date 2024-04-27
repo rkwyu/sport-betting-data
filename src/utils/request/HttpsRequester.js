@@ -11,9 +11,9 @@ class HttpsRequester {
     /**
      * Get the response body of a GET request
      * @param {string} url 
-     * @returns {Promise<string>}
+     * @returns
      */
-    async get(url) {
+    get(url) {
         console.log(`GET: ${url}`)
         return new Promise((resolve, reject) => {
             https.get(url, res => {
@@ -26,7 +26,7 @@ class HttpsRequester {
                         resolve(result)
                     })
                 } else {
-                    reject(`status code: ${res.statusCode}`)
+                    reject(`Status code: ${res.statusCode}`)
                 }
             }).on('error', err => {
                 reject(err)

@@ -30,7 +30,7 @@ class PuppeteerSg {
    * @returns 
    */
   async getPage(url) {
-    console.log(`Get: ${url}`)
+    console.log(`GET: ${url}`)
     if (!this.browser) {
       await this.launch()
     }

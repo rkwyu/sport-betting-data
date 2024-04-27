@@ -5,7 +5,7 @@ import { RaceData } from '../object/RaceData.js';
 import { httpsRequester } from '../../../utils/request/HttpsRequester.js';
 import { configLoader } from '../../../utils/io/ConfigLoader.js';
 
-const host = await configLoader.load("HKJC", "host")
+const host = configLoader.load("HKJC", "host")
 
 class RaceOddsFetcher {
 	constructor() {
@@ -218,12 +218,19 @@ class RaceOddsFetcher {
 	 * Get TRIO (單T) all (全部) odds from getJSON.aspx
 	 * @param {RaceData} raceData 
 	 * @param {int} raceno 
-	 * @param {int} start
-	 *              starting index (0, 48, 96, ...)
 	 * @returns 
 	 */
-	async getTri(raceData, raceno, start) {
-		return await httpsRequester.get(`https://${host}/racing/getJSON.aspx?type=tri&date=${raceData.mtgDate}&venue=${raceData.mtgVenue}&raceno=${raceno}&start=${start}`)
+	async getTri(raceData, raceno) {
+		let result = []
+		for (let start = 0; ; start = start + 48) {
+			let content = await httpsRequester.get(`https://${host}/racing/getJSON.aspx?type=tri&date=${raceData.mtgDate}&venue=${raceData.mtgVenue}&raceno=${raceno}&start=${start}`)
+			if (content.trim() === '{"OUT":""}') {
+				break
+			} else {
+				result.push(JSON.parse(content))
+			}
+		}
+		return JSON.stringify(result)
 	}
 
 	/**
@@ -250,12 +257,19 @@ class RaceOddsFetcher {
 	 * Get FIRST FOUR (四連環) all (全部) odds from getJSON.aspx
 	 * @param {RaceData} raceData 
 	 * @param {int} raceno 
-	 * @param {int} start
-	 *              starting index (0, 48, 96, ...)
 	 * @returns 
 	 */
 	async getFf(raceData, raceno, start) {
-		return await httpsRequester.get(`https://${host}/racing/getJSON.aspx?type=ff&date=${raceData.mtgDate}&venue=${raceData.mtgVenue}&raceno=${raceno}&start=${start}`)
+		let result = []
+		for (let start = 0; ; start = start + 48) {
+			let content = await httpsRequester.get(`https://${host}/racing/getJSON.aspx?type=ff&date=${raceData.mtgDate}&venue=${raceData.mtgVenue}&raceno=${raceno}&start=${start}`)
+			if (content.trim() === '{"OUT":""}') {
+				break
+			} else {
+				result.push(JSON.parse(content))
+			}
+		}
+		return JSON.stringify(result)
 	}
 
 	/**
@@ -307,7 +321,7 @@ class RaceOddsFetcher {
 	}
 
 	/**
-	 * Get Progressive WIN odds (贏賠率走勢) from getJSON.aspx
+	 * Get Progressive WIN odds (獨贏賠率走勢) from getJSON.aspx
 	 * @param {RaceData} raceData 
 	 * @param {int} raceno 
 	 * @returns 

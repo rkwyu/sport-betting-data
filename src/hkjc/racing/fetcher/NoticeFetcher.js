@@ -1,7 +1,7 @@
 import { httpsRequester } from '../../../utils/request/HttpsRequester.js';
 import { configLoader } from '../../../utils/io/ConfigLoader.js';
 
-const host = await configLoader.load("HKJC", "host")
+const host = configLoader.load("HKJC", "host")
 
 class NoticeFetcher {
     constructor() {

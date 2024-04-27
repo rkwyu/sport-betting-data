@@ -23,16 +23,15 @@ class FileIo {
      *        default: false
      */
     async write(content, dest, overwrite) {
-        overwrite = overwrite || false
-        if (!fs.existsSync(dest) || overwrite) {
-            directoryIo.create(path.dirname(dest))
-            fs.writeFileSync(dest, content, err => {
-                if (err) {
-                    console.error(err);
-                }
-            });
-        } else {
-            console.error(`file existed: ${dest}`)
+        if (content) {
+            overwrite = overwrite || false
+            if (!fs.existsSync(dest) || overwrite) {
+                await directoryIo.create(path.dirname(dest))
+                fs.writeFileSync(dest, content);
+                console.log(`Wrote: ${dest}`)
+            } else {
+                console.error(`File existed: ${dest}`)
+            }
         }
     }
 }
