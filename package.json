@@ -1,14 +1,17 @@
 {
-  "name": "odds-fetcher",
+  "name": "sport-betting-data",
   "version": "1.0.0",
-  "description": "",
+  "description": "Sport Data Collector",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "rkwyu",
-  "license": "ISC",
+  "author": {
+    "name": "ray.yukawai",
+    "email": "ray.yukawai@gmail.com"
+  },
+  "license": "GPL-3.0-or-later",
   "dependencies": {
     "cheerio": "^1.0.0-rc.12",
     "compromise": "^14.13.0",
