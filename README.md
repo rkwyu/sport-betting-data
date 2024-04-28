@@ -30,7 +30,7 @@ output=output
 
 ## Usage (CLI) ##
 ```console
-Usage: npm start [options]  
+Usage: npm start [-- options]  
 Options:  
   -hkjc_hr        Get HKJC Horse Racing Odds  
   -hkjc_ms        Get HKJC Marksix Result
