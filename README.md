@@ -30,7 +30,7 @@ output=output
 
 ## Usage (CLI) ##
 ```console
-Usage: node run.js [options]  
+Usage: npm start [options]  
 Options:  
   -hkjc_hr        Get HKJC Horse Racing Odds  
   -hkjc_ms        Get HKJC Marksix Result
@@ -38,12 +38,12 @@ Options:
 
 #### Example 1: Download HKJC's mark six data ####
 ```console
-node run.js -hkjc_ms
+npm start -hkjc_ms
 ```
 
 #### Example 2: Download HKJC's horse racing data ####
 ```console
-node run.js -hkjc_hr
+npm start -hkjc_hr
 ```
 
 ## Output Directory Structure ##

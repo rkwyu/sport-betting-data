@@ -15,7 +15,7 @@ if (process.argv.length == 3 && options.indexOf(process.argv[2]) > -1) {
     }
 } else {
     console.error(`
-Usage: node run.js [options]
+Usage: npm start [options]
 Options:
   -hkjc_hr        Get HKJC Horse Racing Odds
   -hkjc_ms        Get HKJC Marksix Result
