@@ -1,5 +1,8 @@
-# Sport-betting-data ![nodedotjs](https://img.shields.io/badge/node.js-v21.6.1-339933.svg?style=flat&logo=nodedotjs&logoColor=white) ![npm](https://img.shields.io/badge/npm-10.2.4-dc2c35.svg?style=flat&logo=npm&logoColor=white)
-[![License: GPLv3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+# Sport-betting-data ![nodedotjs](https://img.shields.io/badge/node.js-v21.6-339933.svg?style=flat&logo=nodedotjs&logoColor=white) ![npm](https://img.shields.io/badge/npm-10.2-dc2c35.svg?style=flat&logo=npm&logoColor=white)  
+
+<a href="https://buymeacoffee.com/r1y5i" target="_blank">
+<img style="border-radius: 20px" src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174">
+</a>
 
 ## About ##
 A scrapper for sport betting data from different brokers.  
@@ -127,4 +130,4 @@ Match-based / Race-based data will be further grouped into a directory using mat
  
 
 ## License ##
-[GNU GPL v3.0](LICENSE.md)
+This project is licensed under the [MIT License](LICENSE.md)
